@@ -1,0 +1,66 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+}
+.image {
+  margin-bottom: 30px;
+  border: 5px solid grey;
+}
+
+.button {
+  width: 130px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: bisque;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(245, 182, 105);
+}
+
+.right-button,
+.right-button:hover {
+  background-color: rgb(29, 212, 29);
+}
+
+.wrong-button,
+.wrong-button:hover {
+  background-color: rgb(252, 87, 87);
+}
+.selected-button {
+  border: 5px solid grey;
+}
+
+.right-or-wrong {
+  margin: 0;
+  height: 50px;
+  font-size: 20px;
+}
+.button:disabled {
+  color: black;
+}
+
+.next-image {
+  position: absolute;
+  top: 180px;
+  right: 200px;
+  font-size: 50px;
+  border: 0;
+  cursor: pointer;
+  background-color: white;
+}
+
+.result {
+  margin-top: 300px;
+  font-size: 30px;
+}
