@@ -42,8 +42,9 @@ const classmates = [
 ];
 shuffleArray(classmates);
 const container = document.getElementById('container');
-let next = 0;
+let index = 0;
 let howManyRight = 0;
+let highscore = 0;
 
 // array with all names
 let allNames = [];
@@ -67,10 +68,10 @@ function shuffleArray(array) {
 const renderImages = () => {
   container.innerHTML = '';
 
-  if (next < allNames.length) {
+  if (index < allNames.length) {
     //array with four names for four buttons
     let fourNames = [];
-    fourNames.push(classmates[next].name);
+    fourNames.push(classmates[index].name);
     let count = 0;
     for (let i = 0; i < 100; i++) {
       //100 or allNames.length
@@ -80,11 +81,10 @@ const renderImages = () => {
         count++;
       }
     }
-    console.log(fourNames);
     let randomArray = shuffleArray(fourNames);
 
     container.innerHTML += `
-  <image src='${classmates[next].image}' class='image'>
+  <image src='${classmates[index].image}' class='image'>
   <button class='next-image' id='next-image'>></button>
   <p class='right-or-wrong' id='right-or-wrong'></p>
   <div class='buttons-container'>
@@ -99,7 +99,11 @@ const renderImages = () => {
   } else {
     container.innerHTML += `
     <p class='result' id='result'>End of game.<br>Your result is ${howManyRight}/${allNames.length}.</p>
+    <p class='highscore' id='betterOrNot'></p>
+    <button class='play-again-button' id='play_again'>Play again</button>
     `;
+    betterOrNot();
+    makePlayAgain();
   }
 };
 
@@ -114,14 +118,14 @@ function workButtons() {
       buttonEl.classList.add('selected-button');
 
       buttons.forEach((button) => {
-        if (button.innerHTML === classmates[next].name) {
+        if (button.innerHTML === classmates[index].name) {
           button.classList.add('right-button');
         } else {
           button.classList.add('wrong-button');
         }
         button.disabled = true;
       });
-       if (buttonEl.innerHTML === classmates[next].name) {
+      if (buttonEl.innerHTML === classmates[index].name) {
         document.getElementById('right-or-wrong').innerHTML = 'You guessed right!';
         howManyRight++;
       } else {
@@ -129,12 +133,33 @@ function workButtons() {
       }
       document.getElementById('next-image').disabled = false;
     }
-    
   });
 
   document.getElementById('next-image').addEventListener('click', (e) => {
-    next++;
+    index++;
     renderImages();
-    console.log(next);
   });
+}
+
+function makePlayAgain() {
+  document.getElementById('play_again').addEventListener('click', (e) => {
+    renderImages();
+    howManyRight = 0;
+    index = 0;
+  });
+}
+
+function betterOrNot() {
+  const better_or_not = document.getElementById('betterOrNot');
+
+  if (highscore === 0) {
+    highscore = howManyRight;
+  }
+
+  if (highscore !== 0 && highscore > howManyRight) {
+    better_or_not.innerHTML = 'No new highscore.';
+  }
+  if (highscore !== 0 && highscore < howManyRight) {
+    better_or_not.innerHTML = 'New highscore!';
+  }
 }
