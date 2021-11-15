@@ -40,6 +40,7 @@ const classmates = [
     image: 'images/10.jpg',
   },
 ];
+shuffleArray(classmates);
 const container = document.getElementById('container');
 let next = 0;
 let howManyRight = 0;
@@ -72,7 +73,7 @@ const renderImages = () => {
     fourNames.push(classmates[next].name);
     let count = 0;
     for (let i = 0; i < 100; i++) {
-      //////////////////////////////////////100 or allNames.length
+      //100 or allNames.length
       let randomName = allNames[Math.floor(Math.random() * allNames.length)];
       if (!fourNames.includes(randomName) && count !== 3) {
         fourNames.push(randomName);
@@ -112,12 +113,6 @@ function workButtons() {
       let buttonEl = e.target;
       buttonEl.classList.add('selected-button');
 
-      if (buttonEl.innerHTML === classmates[next].name) {
-        document.getElementById('right-or-wrong').innerHTML = 'You guessed right!';
-        howManyRight++;
-      } else {
-        document.getElementById('right-or-wrong').innerHTML = 'You guessed wrong!';
-      }
       buttons.forEach((button) => {
         if (button.innerHTML === classmates[next].name) {
           button.classList.add('right-button');
@@ -126,8 +121,15 @@ function workButtons() {
         }
         button.disabled = true;
       });
+       if (buttonEl.innerHTML === classmates[next].name) {
+        document.getElementById('right-or-wrong').innerHTML = 'You guessed right!';
+        howManyRight++;
+      } else {
+        document.getElementById('right-or-wrong').innerHTML = 'You guessed wrong!';
+      }
       document.getElementById('next-image').disabled = false;
     }
+    
   });
 
   document.getElementById('next-image').addEventListener('click', (e) => {

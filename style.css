@@ -1,5 +1,15 @@
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: rgb(250, 220, 250);
+  background: linear-gradient(
+    90deg,
+    rgba(250, 220, 250, 1) 0%,
+    rgba(224, 224, 251, 1) 48%,
+    rgba(190, 197, 245, 1) 100%
+  );
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+    Verdana, sans-serif;
 }
 
 .image-container {
@@ -9,58 +19,65 @@ body {
 }
 .image {
   margin-bottom: 30px;
-  border: 5px solid grey;
+  box-shadow: 10px 15px 8px #888888;
+  border: 2px solid black;
+  height: 400px;
 }
 
 .button {
-  width: 130px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 14pt;
+  cursor: pointer;
   margin-right: 10px;
   margin-left: 10px;
-  background-color: bisque;
+  line-height: 28pt;
+  padding: 5px;
+  width: 150px;
+  background: white;
+  letter-spacing: 2px;
   border: 1px solid black;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: rgb(245, 182, 105);
+  box-shadow: 4px 4px 1px rgb(131, 148, 245), 4px 4px 1px 1px black;
 }
 
 .right-button,
 .right-button:hover {
-  background-color: rgb(29, 212, 29);
+  background-color: rgb(199, 250, 193);
+  box-shadow: 4px 4px 1px rgb(22, 253, 1), 4px 4px 1px 1px black;
 }
 
 .wrong-button,
 .wrong-button:hover {
-  background-color: rgb(252, 87, 87);
+  background-color: rgb(252, 191, 191);
+  box-shadow: 4px 4px 1px rgb(255, 1, 35), 4px 4px 1px 1px black;
 }
-.selected-button {
-  border: 5px solid grey;
+.selected-button,
+.selected-button:hover {
+  border: 4px solid rgb(2, 2, 2);
 }
 
 .right-or-wrong {
-  margin: 0;
-  height: 50px;
-  font-size: 20px;
+  margin-top: 10px;
+  height: 40px;
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-weight: 100;
 }
 .button:disabled {
   color: black;
 }
 
 .next-image {
+  font-weight: 900;
   position: absolute;
   top: 180px;
   right: 200px;
   font-size: 50px;
   border: 0;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(181, 191, 247);
+  padding: 5px 20px;
 }
 
 .result {
   margin-top: 300px;
-  font-size: 30px;
+  font-size: 50px;
 }
