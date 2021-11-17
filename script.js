@@ -40,17 +40,6 @@ const classmates = [
     image: 'images/10.jpg',
   },
 ];
-shuffleArray(classmates);
-const container = document.getElementById('container');
-let index = 0;
-let howManyRight = 0;
-let highscore = 0;
-
-// array with all names
-let allNames = [];
-for (let i = 0; i < classmates.length; i++) {
-  allNames.push(classmates[i].name);
-}
 
 // function for making array elements in random order
 function shuffleArray(array) {
@@ -62,6 +51,18 @@ function shuffleArray(array) {
     array[j] = temp;
   }
   return array;
+}
+
+shuffleArray(classmates);
+const container = document.getElementById('container');
+let index = 0;
+let howManyRight = 0;
+let highscore = 0;
+
+// array with all names
+let allNames = [];
+for (let i = 0; i < classmates.length; i++) {
+  allNames.push(classmates[i].name);
 }
 
 // function for render quiz
@@ -85,7 +86,6 @@ const renderImages = () => {
 
     container.innerHTML += `
   <image src='${classmates[index].image}' class='image'>
-  <button class='next-image' id='next-image'>></button>
   <p class='right-or-wrong' id='right-or-wrong'></p>
   <div class='buttons-container'>
   <button class='button'>${randomArray[0]}</button>
@@ -94,7 +94,7 @@ const renderImages = () => {
   <button class='button'>${randomArray[3]}</button>
   </div>
   `;
-    document.getElementById('next-image').disabled = true;
+
     workButtons();
   } else {
     container.innerHTML += `
@@ -128,24 +128,26 @@ function workButtons() {
       if (buttonEl.innerHTML === classmates[index].name) {
         document.getElementById('right-or-wrong').innerHTML = 'You guessed right!';
         howManyRight++;
+        index++;
+        setTimeout(function () {
+          renderImages();
+        }, 1500);
       } else {
         document.getElementById('right-or-wrong').innerHTML = 'You guessed wrong!';
+        index++;
+        setTimeout(function () {
+          renderImages();
+        }, 1500);
       }
-      document.getElementById('next-image').disabled = false;
     }
-  });
-
-  document.getElementById('next-image').addEventListener('click', (e) => {
-    index++;
-    renderImages();
   });
 }
 
 function makePlayAgain() {
   document.getElementById('play_again').addEventListener('click', (e) => {
-    renderImages();
     howManyRight = 0;
     index = 0;
+    renderImages();
   });
 }
 
@@ -162,4 +164,6 @@ function betterOrNot() {
   if (highscore !== 0 && highscore < howManyRight) {
     better_or_not.innerHTML = 'New highscore!';
   }
+  
+ 
 }

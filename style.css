@@ -1,4 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  height: 100%;
   background: rgb(250, 220, 250);
   background: linear-gradient(
     90deg,
@@ -6,8 +12,6 @@ body {
     rgba(224, 224, 251, 1) 48%,
     rgba(190, 197, 245, 1) 100%
   );
-  height: 100vh;
-  overflow: hidden;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
     Verdana, sans-serif;
 }
@@ -16,6 +20,7 @@ body {
   text-align: center;
   margin-top: 50px;
   position: relative;
+  margin-bottom: 100px;
 }
 .image {
   margin-bottom: 30px;
@@ -65,18 +70,6 @@ body {
   color: black;
 }
 
-.next-image {
-  font-weight: 900;
-  position: absolute;
-  top: 180px;
-  right: 200px;
-  font-size: 50px;
-  border: 0;
-  cursor: pointer;
-  background-color: rgb(181, 191, 247);
-  padding: 5px 20px;
-}
-
 .result {
   margin-top: 200px;
   font-size: 50px;
@@ -97,3 +90,33 @@ body {
   box-shadow: 4px 4px 1px rgb(131, 148, 245), 4px 4px 1px 1px black;
 }
 
+@media screen and (max-width: 800px) {
+  .image {
+    width: 90%;
+    height: auto;
+  }
+
+  .button {
+    margin-bottom: 30px;
+  }
+  .result {
+    font-size: 35px;
+  }
+  .highscore {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .result {
+    margin-top: 150px;
+    font-size: 35px;
+  }
+  .highscore {
+    font-size: 35px;
+  }
+
+  .button {
+    width: 130px;
+  }
+}
