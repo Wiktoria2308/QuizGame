@@ -207,7 +207,7 @@ const workButtons = () => {
         index++;
         setTimeout(function () {
           renderImages();
-        }, 1500);
+				}, 1500);
       } else {
         document.getElementById('right-or-wrong').innerHTML = 'You guessed wrong!';
         index++;
@@ -234,16 +234,19 @@ const makePlayAgain = () => {
  * function for checking if there is new highscore or not 
  */
 const betterOrNot = () => {
+	console.log('highscore', highscore);
+console.log('howmanyright', howManyRight);
   const better_or_not = document.getElementById('betterOrNot');
-  if (highscore === 0) {
-    highscore = howManyRight;
-  }
-  if (highscore !== 0 && highscore > howManyRight) {
+  
+  if (highscore !== 0 && highscore >= howManyRight) {
     better_or_not.innerHTML = 'No new highscore.';
-  }
+	}
 	if (highscore !== 0 && highscore < howManyRight) {
 		better_or_not.innerHTML = 'New highscore!';
 		highscore = howManyRight;
+	}
+	if (highscore === 0) {
+    highscore = howManyRight;
   }
 }
 
