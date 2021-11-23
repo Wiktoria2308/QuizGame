@@ -238,7 +238,7 @@ const betterOrNot = () => {
   if (highscore === 0) {
     highscore = howManyRight;
   }
-  if (highscore !== 0 && highscore > howManyRight || highscore === howManyRight) {
+  if (highscore !== 0 && highscore > howManyRight) {
     better_or_not.innerHTML = 'No new highscore.';
   }
 	if (highscore !== 0 && highscore < howManyRight) {
