@@ -234,8 +234,6 @@ const makePlayAgain = () => {
  * function for checking if there is new highscore or not 
  */
 const betterOrNot = () => {
-	console.log('highscore', highscore);
-console.log('howmanyright', howManyRight);
   const better_or_not = document.getElementById('betterOrNot');
   
   if (highscore !== 0 && highscore >= howManyRight) {
